@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "N/15ReC6QiU=",
+  "dgSpecHash": "H/jCOWLP328=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nimap\\Desktop\\Nimap-Learning\\MDB_Sync\\MDB_Sync\\MDB_Sync.csproj",
+  "projectFilePath": "C:\\Users\\Nimap\\Desktop\\DataSyncronization\\MDB_Sync\\MDB_Sync\\MDB_Sync.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nimap\\.nuget\\packages\\ini-parser\\2.5.2\\ini-parser.2.5.2.nupkg.sha512",
     "C:\\Users\\Nimap\\.nuget\\packages\\system.configuration.configurationmanager\\8.0.1\\system.configuration.configurationmanager.8.0.1.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nimap\\Desktop\\Nimap-Learning\\MDB_Sync\\MDB_Sync\\MDB_Sync.csproj": {}
+    "C:\\Users\\Nimap\\Desktop\\DataSyncronization\\MDB_Sync\\MDB_Sync\\MDB_Sync.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nimap\\Desktop\\Nimap-Learning\\MDB_Sync\\MDB_Sync\\MDB_Sync.csproj": {
+    "C:\\Users\\Nimap\\Desktop\\DataSyncronization\\MDB_Sync\\MDB_Sync\\MDB_Sync.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nimap\\Desktop\\Nimap-Learning\\MDB_Sync\\MDB_Sync\\MDB_Sync.csproj",
+        "projectUniqueName": "C:\\Users\\Nimap\\Desktop\\DataSyncronization\\MDB_Sync\\MDB_Sync\\MDB_Sync.csproj",
         "projectName": "MDB_Sync",
-        "projectPath": "C:\\Users\\Nimap\\Desktop\\Nimap-Learning\\MDB_Sync\\MDB_Sync\\MDB_Sync.csproj",
+        "projectPath": "C:\\Users\\Nimap\\Desktop\\DataSyncronization\\MDB_Sync\\MDB_Sync\\MDB_Sync.csproj",
         "packagesPath": "C:\\Users\\Nimap\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nimap\\Desktop\\Nimap-Learning\\MDB_Sync\\MDB_Sync\\obj\\",
+        "outputPath": "C:\\Users\\Nimap\\Desktop\\DataSyncronization\\MDB_Sync\\MDB_Sync\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

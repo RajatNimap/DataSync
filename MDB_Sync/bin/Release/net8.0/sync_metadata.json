@@ -1,36 +1,36 @@
 {
   "TableLastSync": {
     "Analyse": {
-      "ServerToClient": "2025-07-21T12:41:17Z",
-      "ClientToServer": "2025-07-21T12:41:17Z"
+      "ServerToClient": "2025-07-24T13:49:44Z",
+      "ClientToServer": "2025-07-24T13:49:44Z"
     },
     "Anfahrstellen": {
       "ServerToClient": "0001-01-01T00:00:00",
       "ClientToServer": "0001-01-01T00:00:00"
     },
     "Anfragen": {
-      "ServerToClient": "2025-07-21T08:28:39Z",
-      "ClientToServer": "2025-07-21T08:28:39Z"
+      "ServerToClient": "2025-07-21T08:28:40Z",
+      "ClientToServer": "2025-07-21T08:28:40Z"
     },
     "Anfragen_Notizen": {
-      "ServerToClient": "2025-07-18T08:40:05Z",
-      "ClientToServer": "2025-07-18T08:40:05Z"
+      "ServerToClient": "2025-07-24T13:48:49Z",
+      "ClientToServer": "2025-07-24T13:48:49Z"
     },
     "Ansprechpartner": {
-      "ServerToClient": "2025-07-18T08:40:14Z",
-      "ClientToServer": "2025-07-18T08:40:14Z"
+      "ServerToClient": "2025-07-18T08:40:15Z",
+      "ClientToServer": "2025-07-18T08:40:15Z"
     },
     "DB_Const": {
       "ServerToClient": "2025-07-21T07:12:04Z",
       "ClientToServer": "2025-07-08T14:04:58Z"
     },
     "Firmen": {
-      "ServerToClient": "2025-07-18T10:42:54Z",
-      "ClientToServer": "2025-07-18T10:42:54Z"
+      "ServerToClient": "2025-07-18T10:42:55Z",
+      "ClientToServer": "2025-07-18T10:42:55Z"
     },
     "Frachten": {
-      "ServerToClient": "2025-07-18T05:53:16Z",
-      "ClientToServer": "2025-07-18T05:53:16Z"
+      "ServerToClient": "2025-07-24T12:51:17Z",
+      "ClientToServer": "2025-07-24T12:51:17Z"
     },
     "Kuerzel": {
       "ServerToClient": "2025-07-21T07:12:04Z",
@@ -45,16 +45,16 @@
       "ClientToServer": "1899-12-29T18:30:00Z"
     },
     "loeschen": {
-      "ServerToClient": "2025-07-09T13:03:23Z",
-      "ClientToServer": "2025-07-09T13:03:23Z"
+      "ServerToClient": "2025-07-09T13:03:24Z",
+      "ClientToServer": "2025-07-09T13:03:24Z"
     },
     "Mails": {
-      "ServerToClient": "2025-07-18T10:42:42Z",
-      "ClientToServer": "2025-07-18T10:42:42Z"
+      "ServerToClient": "2025-07-18T10:42:43Z",
+      "ClientToServer": "2025-07-18T10:42:43Z"
     },
     "Nutzer": {
-      "ServerToClient": "2025-07-18T11:24:45Z",
-      "ClientToServer": "2025-07-18T11:24:45Z"
+      "ServerToClient": "2025-07-18T11:24:46Z",
+      "ClientToServer": "2025-07-18T11:24:46Z"
     },
     "Preisinfos_Basis": {
       "ServerToClient": "2025-01-27T11:18:40Z",
@@ -69,16 +69,16 @@
       "ClientToServer": "2025-07-03T04:30:43Z"
     },
     "Preisinfos_Frachten": {
-      "ServerToClient": "2025-07-08T14:04:10Z",
-      "ClientToServer": "2025-07-08T14:04:10Z"
+      "ServerToClient": "2025-07-08T14:04:11Z",
+      "ClientToServer": "2025-07-08T14:04:11Z"
     },
     "Preisinfos_Frachten_km": {
       "ServerToClient": "2025-01-27T11:20:22Z",
       "ClientToServer": "2025-01-27T11:20:22Z"
     },
     "Preisinfos_Quellen_Ausschluss": {
-      "ServerToClient": "2025-02-12T05:19:30Z",
-      "ClientToServer": "2025-02-12T05:19:30Z"
+      "ServerToClient": "2025-02-12T05:19:31Z",
+      "ClientToServer": "2025-02-12T05:19:31Z"
     },
     "Preisinfos_Standartliste": {
       "ServerToClient": "2025-07-03T04:14:56Z",
@@ -93,16 +93,16 @@
       "ClientToServer": "2025-01-27T11:20:23Z"
     },
     "todo": {
-      "ServerToClient": "2025-07-18T10:29:28Z",
-      "ClientToServer": "2025-07-18T10:29:28Z"
+      "ServerToClient": "2025-07-18T10:29:29Z",
+      "ClientToServer": "2025-07-18T10:29:29Z"
     },
     "todo_notiz": {
-      "ServerToClient": "2025-07-18T08:39:58Z",
-      "ClientToServer": "2025-07-18T08:39:58Z"
+      "ServerToClient": "2025-07-18T08:39:59Z",
+      "ClientToServer": "2025-07-18T08:39:59Z"
     },
     "Werkstoffe": {
-      "ServerToClient": "2025-07-09T06:44:06Z",
-      "ClientToServer": "2025-07-09T06:44:06Z"
+      "ServerToClient": "2025-07-09T06:44:07Z",
+      "ClientToServer": "2025-07-09T06:44:07Z"
     },
     "Werkstoffe_Alias": {
       "ServerToClient": "2025-06-02T08:03:38Z",
