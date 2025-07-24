@@ -1,0 +1,6 @@
+administrator
+N1m@p2025$Server
+95.111.230.3
+BatFolder
+\\95.111.230.3\BatFolder\TEST.mdb
+C:\Users\Nimap\Documents\mdbfile\TEST.mdb

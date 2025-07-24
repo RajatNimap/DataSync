@@ -1,0 +1,112 @@
+{
+  "TableLastSync": {
+    "Analyse": {
+      "ServerToClient": "2025-07-21T12:41:17Z",
+      "ClientToServer": "2025-07-21T12:41:17Z"
+    },
+    "Anfahrstellen": {
+      "ServerToClient": "0001-01-01T00:00:00",
+      "ClientToServer": "0001-01-01T00:00:00"
+    },
+    "Anfragen": {
+      "ServerToClient": "2025-07-21T08:28:39Z",
+      "ClientToServer": "2025-07-21T08:28:39Z"
+    },
+    "Anfragen_Notizen": {
+      "ServerToClient": "2025-07-18T08:40:05Z",
+      "ClientToServer": "2025-07-18T08:40:05Z"
+    },
+    "Ansprechpartner": {
+      "ServerToClient": "2025-07-18T08:40:14Z",
+      "ClientToServer": "2025-07-18T08:40:14Z"
+    },
+    "DB_Const": {
+      "ServerToClient": "2025-07-21T07:12:04Z",
+      "ClientToServer": "2025-07-08T14:04:58Z"
+    },
+    "Firmen": {
+      "ServerToClient": "2025-07-18T10:42:54Z",
+      "ClientToServer": "2025-07-18T10:42:54Z"
+    },
+    "Frachten": {
+      "ServerToClient": "2025-07-18T05:53:16Z",
+      "ClientToServer": "2025-07-18T05:53:16Z"
+    },
+    "Kuerzel": {
+      "ServerToClient": "2025-07-21T07:12:04Z",
+      "ClientToServer": "2025-07-08T14:05:04Z"
+    },
+    "Kursbewertung": {
+      "ServerToClient": "0001-01-01T00:00:00",
+      "ClientToServer": "0001-01-01T00:00:00"
+    },
+    "Kurse": {
+      "ServerToClient": "1899-12-29T18:30:00Z",
+      "ClientToServer": "1899-12-29T18:30:00Z"
+    },
+    "loeschen": {
+      "ServerToClient": "2025-07-09T13:03:23Z",
+      "ClientToServer": "2025-07-09T13:03:23Z"
+    },
+    "Mails": {
+      "ServerToClient": "2025-07-18T10:42:42Z",
+      "ClientToServer": "2025-07-18T10:42:42Z"
+    },
+    "Nutzer": {
+      "ServerToClient": "2025-07-18T11:24:45Z",
+      "ClientToServer": "2025-07-18T11:24:45Z"
+    },
+    "Preisinfos_Basis": {
+      "ServerToClient": "2025-01-27T11:18:40Z",
+      "ClientToServer": "2025-01-27T11:18:40Z"
+    },
+    "Preisinfos_Einstellungen": {
+      "ServerToClient": "2025-07-03T04:39:04Z",
+      "ClientToServer": "2025-07-03T04:39:04Z"
+    },
+    "Preisinfos_Firmen": {
+      "ServerToClient": "2025-07-03T04:30:43Z",
+      "ClientToServer": "2025-07-03T04:30:43Z"
+    },
+    "Preisinfos_Frachten": {
+      "ServerToClient": "2025-07-08T14:04:10Z",
+      "ClientToServer": "2025-07-08T14:04:10Z"
+    },
+    "Preisinfos_Frachten_km": {
+      "ServerToClient": "2025-01-27T11:20:22Z",
+      "ClientToServer": "2025-01-27T11:20:22Z"
+    },
+    "Preisinfos_Quellen_Ausschluss": {
+      "ServerToClient": "2025-02-12T05:19:30Z",
+      "ClientToServer": "2025-02-12T05:19:30Z"
+    },
+    "Preisinfos_Standartliste": {
+      "ServerToClient": "2025-07-03T04:14:56Z",
+      "ClientToServer": "2025-07-03T04:14:56Z"
+    },
+    "Relations": {
+      "ServerToClient": "2025-07-03T10:54:46Z",
+      "ClientToServer": "2025-07-03T10:54:46Z"
+    },
+    "Standardsorten": {
+      "ServerToClient": "2025-01-27T11:20:23Z",
+      "ClientToServer": "2025-01-27T11:20:23Z"
+    },
+    "todo": {
+      "ServerToClient": "2025-07-18T10:29:28Z",
+      "ClientToServer": "2025-07-18T10:29:28Z"
+    },
+    "todo_notiz": {
+      "ServerToClient": "2025-07-18T08:39:58Z",
+      "ClientToServer": "2025-07-18T08:39:58Z"
+    },
+    "Werkstoffe": {
+      "ServerToClient": "2025-07-09T06:44:06Z",
+      "ClientToServer": "2025-07-09T06:44:06Z"
+    },
+    "Werkstoffe_Alias": {
+      "ServerToClient": "2025-06-02T08:03:38Z",
+      "ClientToServer": "2025-06-02T08:03:38Z"
+    }
+  }
+}
