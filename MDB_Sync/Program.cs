@@ -995,8 +995,6 @@ namespace RobustAccessDbSync
                 return false;
 
             string extension = Path.GetExtension(path);
-
-
             return extension.Equals(".mdb", StringComparison.OrdinalIgnoreCase) || extension.Equals(".crm", StringComparison.OrdinalIgnoreCase);
         }
 
@@ -1102,6 +1100,63 @@ namespace RobustAccessDbSync
                 return false;
             }
         }
+        //static void SyncFiles(string sourceFolder, string targetFolder, string logFile, string direction)
+        //{
+        //    if (!Directory.Exists(sourceFolder))
+        //        return;
+
+        //    string today = DateTime.Today.ToString("yyyy-MM-dd");
+        //    string logPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, logFile);
+        //    string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".gif", ".pdf", ".docx", ".xlsx", ".txt", ".jfif", ".cs", ".dll", ".json", ".java", ".c", ".cpp",".rtf", ".DS_Store",".html","zeile",".db",".dat"};
+
+        //    var sourceFiles = Directory
+        //        .EnumerateFiles(sourceFolder, "*", SearchOption.AllDirectories)
+        //        .Where(f =>
+        //            !f.EndsWith(".ldb", StringComparison.OrdinalIgnoreCase) &&
+        //            allowedExtensions.Contains(Path.GetExtension(f).ToLower()))
+        //        .ToArray();
+
+        //    var iniLines = File.Exists(logPath) ? File.ReadAllLines(logPath).ToList() : new List<string>();
+        //    if (!iniLines.Contains($"[{today}]"))
+        //        iniLines.Add($"[{today}]");
+
+        //    int fileCount = iniLines.Count(line => line.StartsWith("file") && line.Contains("="));
+
+        //    foreach (var src in sourceFiles)
+        //    {
+        //        string relativePath = Path.GetRelativePath(sourceFolder, src);
+        //        string dest = Path.Combine(targetFolder, relativePath);
+
+        //        Directory.CreateDirectory(Path.GetDirectoryName(dest)!);
+
+        //        bool shouldCopy = !File.Exists(dest) || File.GetLastWriteTimeUtc(src) > File.GetLastWriteTimeUtc(dest);
+        //        if (shouldCopy)
+        //        {
+        //            File.Copy(src, dest, true);
+        //            PrintSuccess($"[✓] Copied: {relativePath}");
+        //            fileCount++;
+        //            iniLines.Add($"file{fileCount}={relativePath}");
+        //            iniLines.Add($"file{fileCount}.direction={direction}");
+        //        }
+        //    }
+
+        //    if (fileCount > 0)
+        //    {
+        //        string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+        //        var logLines = new List<string>
+        //{
+        //    $"[{timestamp}]",
+        //    $"Sync = Files",
+        //    $"changes = {fileCount}",
+        //    $"direction = {direction}",
+        //    ""
+        //};
+        //        File.AppendAllLines(logPath, logLines);
+        //    }
+
+        //    //File.WriteAllLines(logPath, iniLines);
+        //}
+
         static void SyncFiles(string sourceFolder, string targetFolder, string logFile, string direction)
         {
             if (!Directory.Exists(sourceFolder))
@@ -1109,14 +1164,21 @@ namespace RobustAccessDbSync
 
             string today = DateTime.Today.ToString("yyyy-MM-dd");
             string logPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, logFile);
-            string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".gif", ".pdf", ".docx", ".xlsx", ".txt", ".jfif", ".cs", ".dll", ".json", ".java", ".c", ".cpp" };
 
+            // Get ALL files (no extension filter)
             var sourceFiles = Directory
                 .EnumerateFiles(sourceFolder, "*", SearchOption.AllDirectories)
-                .Where(f =>
-                    !f.EndsWith(".ldb", StringComparison.OrdinalIgnoreCase) &&
-                    allowedExtensions.Contains(Path.GetExtension(f).ToLower()))
+                .Where(f => !f.EndsWith(".ldb", StringComparison.OrdinalIgnoreCase))
                 .ToArray();
+
+            // Create ALL directories, including empty ones
+            var sourceDirs = Directory.EnumerateDirectories(sourceFolder, "*", SearchOption.AllDirectories);
+            foreach (var dir in sourceDirs)
+            {
+                string relativePath = Path.GetRelativePath(sourceFolder, dir);
+                string targetDir = Path.Combine(targetFolder, relativePath);
+                Directory.CreateDirectory(targetDir);  // Ensures empty folders are created
+            }
 
             var iniLines = File.Exists(logPath) ? File.ReadAllLines(logPath).ToList() : new List<string>();
             if (!iniLines.Contains($"[{today}]"))
@@ -1129,14 +1191,13 @@ namespace RobustAccessDbSync
                 string relativePath = Path.GetRelativePath(sourceFolder, src);
                 string dest = Path.Combine(targetFolder, relativePath);
 
-                Directory.CreateDirectory(Path.GetDirectoryName(dest)!);
+                Directory.CreateDirectory(Path.GetDirectoryName(dest)!);  // Ensure directory exists
 
                 bool shouldCopy = !File.Exists(dest) || File.GetLastWriteTimeUtc(src) > File.GetLastWriteTimeUtc(dest);
                 if (shouldCopy)
                 {
                     File.Copy(src, dest, true);
                     PrintSuccess($"[✓] Copied: {relativePath}");
-
                     fileCount++;
                     iniLines.Add($"file{fileCount}={relativePath}");
                     iniLines.Add($"file{fileCount}.direction={direction}");
@@ -1157,10 +1218,10 @@ namespace RobustAccessDbSync
                 File.AppendAllLines(logPath, logLines);
             }
 
-            //File.WriteAllLines(logPath, iniLines);
         }
 
-      
+
+
 
         static void SyncFilesBothDirections(string clientDbPath, string mainclient, string serverDbPath)
         {
