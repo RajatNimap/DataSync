@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{57279979-017F-405C-BADE-89C10722F7A6}|MDB_Sync\\MDB_Sync.csproj|c:\\users\\nimap\\desktop\\datasyncronization\\mdb_sync\\mdb_sync\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{57279979-017F-405C-BADE-89C10722F7A6}|MDB_Sync\\MDB_Sync.csproj|solutionrelative:mdb_sync\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57279979-017F-405C-BADE-89C10722F7A6}|MDB_Sync\\MDB_Sync.csproj|c:\\users\\nimap\\desktop\\datasyncronization\\mdb_sync\\mdb_sync\\mdb_sync.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{57279979-017F-405C-BADE-89C10722F7A6}|MDB_Sync\\MDB_Sync.csproj|solutionrelative:mdb_sync\\mdb_sync.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,13 +30,25 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MDB_Sync.csproj",
+              "DocumentMoniker": "C:\\Users\\Nimap\\Desktop\\DataSyncronization\\MDB_Sync\\MDB_Sync\\MDB_Sync.csproj",
+              "RelativeDocumentMoniker": "MDB_Sync\\MDB_Sync.csproj",
+              "ToolTip": "C:\\Users\\Nimap\\Desktop\\DataSyncronization\\MDB_Sync\\MDB_Sync\\MDB_Sync.csproj",
+              "RelativeToolTip": "MDB_Sync\\MDB_Sync.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-07-26T07:21:48.426Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Nimap\\Desktop\\DataSyncronization\\MDB_Sync\\MDB_Sync\\Program.cs",
               "RelativeDocumentMoniker": "MDB_Sync\\Program.cs",
               "ToolTip": "C:\\Users\\Nimap\\Desktop\\DataSyncronization\\MDB_Sync\\MDB_Sync\\Program.cs",
               "RelativeToolTip": "MDB_Sync\\Program.cs",
-              "ViewState": "AgIAAEkEAACA0MzMzEwcwE8EAAALAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-17T11:54:17.425Z",
               "EditorCaption": ""

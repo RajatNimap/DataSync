@@ -26,15 +26,7 @@ namespace RobustAccessDbSync
     {
         public Dictionary<string, SyncTimestamps> TableLastSync { get; set; } = new();
     }
-    public class ChangesModel
-    {
-        // public string GUID { get; set; }
-        public string Direction { get; set; }
-        public string ColumnName { get; set; }
-        public string OldValue { get; set; }
-        public string NewValue { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-    }
+ 
 
     class Program
     {
@@ -50,8 +42,8 @@ namespace RobustAccessDbSync
         private static int _syncCycleWaitMinutes = 1;
         private static Stopwatch _cycleTimer = new Stopwatch();
         private static DateTime _nextSyncTime = DateTime.Now;
-       public static string clientDbPath;
-       public static string serverDbPath;
+        public static string clientDbPath;
+        public static string serverDbPath;
         static string rememberedClientPath = null;
         static string clientFileFolder;
         static string serverFileFolder;
