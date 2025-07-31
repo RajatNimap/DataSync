@@ -23,7 +23,6 @@ namespace RobustAccessDbSync
         public Dictionary<string, SyncTimestamps> TableLastSync { get; set; } = new();
     }
  
-
     class Program
     {
         static string DRIVE_LETTER = "X:";
@@ -266,11 +265,11 @@ namespace RobustAccessDbSync
                 clientFileFolder = clientDbPath;
                 File.WriteAllText(pointerFile, clientFileFolder);
 
-
                 if (File.Exists(Path.Combine(clientDbPath, Path.GetFileName(serverDbPath))))
                 {
                     clientDbPath = Path.Combine(clientDbPath, Path.GetFileName(serverDbPath));
                 }
+
                 else
                 {
                     while (true)
@@ -415,6 +414,7 @@ namespace RobustAccessDbSync
             PrintInfo("Press 'S' to stop, 'R' to restart, 'Q' to quit.\n");
 
             var syncTask = Task.Run(() => ContinuousSync(serverConn, clientConn, syncMetaFile, metadata));
+            var fileSyncTask = Task.Run(() => PeriodicFileSyncRunner(clientDbPath, serverDbPath, 1)); // every 5 minutes
 
             while (true)
             {
@@ -429,6 +429,7 @@ namespace RobustAccessDbSync
                             _syncRunning = false;
                             PrintWarning("Stopping synchronization...");
                             await syncTask;
+                            await fileSyncTask;
                         }
                         break;
                     }
@@ -439,6 +440,8 @@ namespace RobustAccessDbSync
                             _syncRunning = false;
                             PrintWarning("Stopping synchronization...");
                             await syncTask;
+                            await fileSyncTask;
+
                             PrintInfo("Synchronization stopped. Press 'R' to restart or 'Q' to quit.");
                         }
                     }
@@ -449,14 +452,17 @@ namespace RobustAccessDbSync
                             _syncRunning = false;
                             PrintWarning("Restarting synchronization...");
                             await syncTask;
+                            await fileSyncTask;
+
                         }
                         else
                         {
                             PrintWarning("Starting synchronization...");
                         }
-
+                        
                         _syncRunning = true;
                         syncTask = Task.Run(() => ContinuousSync(serverConn, clientConn, syncMetaFile, metadata));
+                        fileSyncTask = Task.Run(() => PeriodicFileSyncRunner(clientDbPath, serverDbPath, 1));
                     }
                 }
 
@@ -886,6 +892,7 @@ namespace RobustAccessDbSync
 
         static void SyncFiles(string sourceFolder, string targetFolder, string logFile, string direction,List<string>? Helper,bool isFUllSErvertoCLient)
         {
+            
             if (!Directory.Exists(sourceFolder))
                 return;
 
@@ -956,39 +963,73 @@ namespace RobustAccessDbSync
 
         static void SyncFilesBothDirections(string mainclient, string serverDbPath)
         {
-            string logFilePath = Path.Combine(Path.GetDirectoryName(mainclient)!, "Configlog.ini");
-            bool isServerMdb = HasMdbExtension(serverDbPath);
-            string serverFolder = Path.GetDirectoryName(serverDbPath)!;
-            string clientFolder1 = Path.GetDirectoryName(mainclient)!;
-
-            var HelperList = new List<string>();
-
-            foreach (var clientFolder in Client_Folders)
+            try
             {
-                if (!Directory.Exists(clientFolder)) continue;
-
-                string clientFolderName = Path.GetFileName(clientFolder);
-
-                HelperList.Add(clientFolderName);
-
-                string correspondingServerFolder = Path.Combine(serverFolder, clientFolderName);
-
-                // Client → Server Sync
-                if (!Directory.Exists(correspondingServerFolder))
+                if (_syncRunning)
                 {
-                    Directory.CreateDirectory(correspondingServerFolder);
-                    PrintSuccess($"[+] Created folder on server: {correspondingServerFolder}");
-                }
+                    string logFilePath = Path.Combine(Path.GetDirectoryName(mainclient)!, "Configlog.ini");
+                    bool isServerMdb = HasMdbExtension(serverDbPath);
+                    string serverFolder = Path.GetDirectoryName(serverDbPath)!;
+                    string clientFolder1 = Path.GetDirectoryName(mainclient)!;
+                    var HelperList = new List<string>();
 
-                     SyncFiles(clientFolder, correspondingServerFolder, logFilePath, "ClientToServer",HelperList,false);
-                     SyncFiles(correspondingServerFolder, clientFolder, logFilePath, "ServerToClient",HelperList,false);
+                    foreach (var clientFolder in Client_Folders)
+                    {
+                        if (!Directory.Exists(clientFolder)) continue;
+
+                        string clientFolderName = Path.GetFileName(clientFolder);
+                        HelperList.Add(clientFolderName);
+
+                        string correspondingServerFolder = Path.Combine(serverFolder, clientFolderName);
+
+                        // Client → Server Sync
+                        if (!Directory.Exists(correspondingServerFolder))
+                        {
+                            Directory.CreateDirectory(correspondingServerFolder);
+                            PrintSuccess($"[+] Created folder on server: {correspondingServerFolder}");
+                        }
+
+                        SyncFiles(clientFolder, correspondingServerFolder, logFilePath, "ClientToServer", HelperList, false);
+                        SyncFiles(correspondingServerFolder, clientFolder, logFilePath, "ServerToClient", HelperList, false);
+                    }
+
+                    // Final server-to-main-client sync
+                    SyncFiles(serverFolder, clientFolder1, logFilePath, "ServerToClient", HelperList, true);
+                }
+            }
+            catch (Exception ex)
+            {
+                PrintError($"[!] Error during sync: {ex.Message}");
 
             }
-            SyncFiles(serverFolder, clientFolder1, logFilePath, "ServerToClient", HelperList, true);
-
-
         }
+        static async Task PeriodicFileSyncRunner(string clientPath, string serverPath, int intervalMinutes)
+        {
+            while (_syncRunning)
+            {
+                try
+                {
+                    PrintInfo("Starting periodic file sync...");
+                    SyncFilesBothDirections(clientPath, serverPath);
+                    PrintSuccess("File sync completed.");
+                }
+                catch (Exception ex)
+                {
+                    PrintError($"[File Sync] Error: {ex.Message}");
+                }
 
+                DateTime nextFileSync = DateTime.Now.AddMinutes(intervalMinutes);
+              //  Console.WriteLine();
+                while (DateTime.Now < nextFileSync && _syncRunning)
+                {
+                    TimeSpan remaining = nextFileSync - DateTime.Now;
+                   // Console.Write($"  Next file sync in {remaining.Minutes:D2}:{remaining.Seconds:D2}   ");
+                    await Task.Delay(1000);
+                }
+
+                Console.WriteLine(); // Clean line after countdown
+            }
+        }
 
 
 
@@ -1016,7 +1057,7 @@ SyncMetadata metadata)
                             PrintSuccess("Connection restored");
                         }
                         _lastOnlineTime = DateTime.Now;
-                        var fileSyncTask = Task.Run(() => SyncFilesBothDirections(clientDbPath, serverDbPath));
+                       // var fileSyncTask = Task.Run(() => SyncFilesBothDirections(clientDbPath, serverDbPath));
                         //  List<DateTime> lastSyncTimes1 = metadata.TableLastSync.Values.ToList();
                         int totalChanges = 0;
                         foreach (var tableName in allTables)
@@ -1102,7 +1143,7 @@ SyncMetadata metadata)
                                 // PrintError($"Error syncing table {tableName}: {ex.Message}");
                             }
                         }
-                        await fileSyncTask;
+                        //await fileSyncTask;
                         _cycleTimer.Stop();
                         PrintSuccess($"Sync cycle completed in {_cycleTimer.Elapsed.TotalSeconds:0.00} seconds. Total changes: {totalChanges}");
 
